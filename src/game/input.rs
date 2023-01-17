@@ -11,14 +11,7 @@ fn get_input(prompt: &str) -> String {
     let mut ret: String = String::new();
     io::stdin().read_line(&mut ret).expect("Invalid String");
 
-    if let Some('\n') = ret.chars().next_back() {
-        ret.pop();
-    }
-
-    if let Some('\r') = ret.chars().next_back() {
-        ret.pop();
-    }
-    ret
+    String::from(ret.trim())
 }
 
 pub fn clear_terminal() {
@@ -28,6 +21,4 @@ pub fn clear_terminal() {
 
 pub fn get_direction() {
     // get's the direction the user wants to go
-    let input = get_input(">>>");
-
 }

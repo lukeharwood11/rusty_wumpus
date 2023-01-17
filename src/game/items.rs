@@ -1,4 +1,5 @@
 
+// a trait is like an interface, we define a 'trait' that we want something to have
 pub trait Usable {
     fn use_ability(&self);
     fn to_string(&self);
@@ -17,6 +18,7 @@ pub struct RustyWumpus {
     pub strength: i32
 }
 
+// this is how you attach a struct to a trait
 impl Usable for RustyWumpus {
     fn to_string(&self) {
         
@@ -27,15 +29,15 @@ impl Usable for RustyWumpus {
     }
 }
 
+// the 'a is a lifetime specifier
 // We are telling the compiler that the lifetime of 
-// 'item's is tied to the lifetime of the Cell.
+// item's is tied to the lifetime of the Cell.
 // This essentially means that we won't have a cell if we don't have
 // 'a, and the compiler will hold us to that.
 pub struct Cell<'a> {
-    items: Vec<&'a dyn Usable>
+    items: Vec<&'a dyn Usable>  // items goes down with the ship
 }
 
 pub struct Board<'a> {
-    // static lifetime
-    cells: [&'a Cell<'a>; 100],
+    cells: [&'a Cell<'a>; 100], // cells goes down with the ship
 }
